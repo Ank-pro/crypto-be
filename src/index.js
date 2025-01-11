@@ -6,8 +6,6 @@ const cryptoRoutes = require('./routes/cryptoRoutes')
 
 dbConnect(); //connect DB
 
-fetchPrices(); //fetching crypto
-
 app.use('/api',cryptoRoutes)
 
 const PORT = process.env.PORT || 5000;

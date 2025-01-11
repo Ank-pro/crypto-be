@@ -5,6 +5,7 @@ const Crypto = require('../model/cryptoModel');
 const fetchPrices = async () => {
     const coins = ['bitcoin', 'matic-network', 'ethereum'];
     try {
+        console.log('Starting to fetch...')
         const { data } = await axios.get(
             `https://api.coingecko.com/api/v3/simple/price?ids=${coins.join(',')}&vs_currencies=usd&include_market_cap=true&include_24hr_change=true`
         );
@@ -27,7 +28,7 @@ const fetchPrices = async () => {
     }
 };
 
-// Schedule the job to run every 2 hours
+// Scheduling every 2 hours
 cron.schedule('0 */2 * * *', fetchPrices);
 
 module.exports = fetchPrices;

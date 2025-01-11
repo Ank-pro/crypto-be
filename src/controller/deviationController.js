@@ -13,8 +13,8 @@ const calculateDeviation = async (req, res) => {
             .sort({ timestamp: -1 })
             .limit(100);
 
-        if (records.length === 0) {
-            return res.status(404).json({ message: 'No records found for the requested coin' });
+        if (records.length < 100) {
+            return res.status(404).json({ message: 'Not enough records found for standard deviation' });
         }
 
         const prices = records.map(record => record.price);
