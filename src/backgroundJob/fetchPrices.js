@@ -16,6 +16,7 @@ const fetchPrices = async () => {
                     price: data[coin].usd,
                     marketCap: data[coin].usd_market_cap,
                     change24h: data[coin].usd_24h_change,
+                    timestamp: new Date()
                 });
             }
         }
