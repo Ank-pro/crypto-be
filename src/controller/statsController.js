@@ -8,10 +8,12 @@ const getStats = async (req,res)=>{
     }
 
     try {
-        const {price,marketCap,change24h} = await Crypto.findOne({coin}).sort({timestamp : -1});
+        const latData = await Crypto.findOne({coin}).sort({timestamp : -1});
         if(!latData){
             return res.status(404).json({msg : 'Error finding coin data'})
         }
+
+        const {price,marketCap,change24h} = latData;
         return res.status(200).json({price,marketCap,change24h});
     } catch (error) {
         console.log('Err :', error);
@@ -19,4 +21,4 @@ const getStats = async (req,res)=>{
     }
 }
 
-module.exports = {getStats};
+module.exports = getStats;
